@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="default" transaction-type="JTA">
+<!-- Glassfish defaults...	
+--> 
+   	<jta-data-source>jdbc/__default</jta-data-source>
+      <class>nl.sogeti.jdc.demo.jee6.banking.core.entity.Account</class>
+      <class>nl.sogeti.jdc.demo.jee6.banking.core.entity.AccountLog</class>
+      <class>nl.sogeti.jdc.demo.jee6.banking.core.entity.Person</class>
+      <class>nl.sogeti.jdc.demo.jee6.banking.core.entity.Transfer</class>
+      
+<!-- Other eclipselink properties: 
+		<properties>
+         <property name="eclipselink.ddl-generation" value="create-tables" />
+		</properties>
+         <property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+ -->
+
+
+<!-- Jboss defaults...	
+		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+
+      <properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="false" />
+		</properties>
+ -->     
+
+
+ 	</persistence-unit>
+
+</persistence>
