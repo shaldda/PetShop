@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<body>
+	
+		<ui:composition>
+		<script>
+			cart = document.getElementById("cart");
+			cart.style.display = "none";
+		</script>
+	<!-- 	<div class="alert alert-success" role="alert">
+		    <strong>Well done!</strong> You successfully read this
+		    important alert message.
+		</div> -->
+		 <a href="index.xhtml" style="float: right margin-right: 10px" class="btn btn-primary btn-lg"><h:outputText value="Verder winkelen" /></a> 
+			<table class="table table-hover">
+			  <thead>
+			    <tr>
+			      <th><center>Naam</center></th>
+			      <th><center>Beschrijving</center></th>
+			      <th><center>Prijs</center></th>
+			      <th><center>Aantal</center></th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  
+			  	<ui:repeat var="product" value="#{cartSessionBean.getCart()}" varStatus="status">
+			  		<h:form>
+					    <tr>
+					      <td scope="row"><center><h:outputText value="#{product.name}" /></center></td>
+					      <td><center><h:outputText value="#{product.description}" /></center></td>
+					      <td><center><h:outputText value="#{product.price}" /></center></td>
+					      <th><center><h:outputText value="#{cartSessionsBean.getCart()}" /></center></th>
+					      <td><center><h:commandButton value="Verwijder" class="btn btn-danger" 
+					      		action="#{cartSessionBean.removeFromCart(product)}"	 ></h:commandButton></center></td>
+					    </tr>
+				    </h:form>
+				  </ui:repeat>
+			  	 	<tr>
+				      <td>&nbsp;</td> 
+				      <td>&nbsp;</td>
+				      <td><center><h:outputText value="#{cartSessionBean.getTotalPrice()}" /></center></td>
+				      <td>&nbsp;</td>
+				    </tr>
+			  </tbody>
+			</table> 	
+		</ui:composition>
+	</body>
+</html>

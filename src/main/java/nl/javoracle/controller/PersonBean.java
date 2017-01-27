@@ -1,4 +1,4 @@
-package nl.edegier.demo.controller;
+package nl.javoracle.controller;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,24 +8,13 @@ import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Inject;
 
-import nl.edegier.demo.common.Parameters;
-import nl.edegier.demo.model.Person;
-import nl.edegier.demo.service.PersonService;
+import nl.javoracle.common.Parameters;
+import nl.javoracle.model.Person;
+import nl.javoracle.service.PersonService;
 
-/**
- * This is the JSF managed bean that handles calls from the home.xhtml This
- * class uses the PersonService EJB, injected by the container by use of the @Inject
- * annotation.
- * 
- * @author Erwin de Gier
- * 
- */
 @ManagedBean
 public class PersonBean implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4246337937697608045L;
 
 	@Inject
@@ -49,6 +38,7 @@ public class PersonBean implements Serializable {
 	}
 
 	public String save() {
+		logger.log(Level.INFO, "HOOOOI");
 		if (name != null) {
 			Person person = new Person();
 			person.setName(this.name);
@@ -56,7 +46,7 @@ public class PersonBean implements Serializable {
 			logger.log(Level.INFO, "Person " + person.getName() + " saved.");
 		}
 
-		return "hello";
+		return "index";
 	}
 
 	public String getTestParameter() {

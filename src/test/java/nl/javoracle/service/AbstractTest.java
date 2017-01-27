@@ -1,4 +1,4 @@
-package nl.edegier.demo.service;
+package nl.javoracle.service;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;

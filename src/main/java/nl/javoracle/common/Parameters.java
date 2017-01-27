@@ -1,16 +1,6 @@
-package nl.edegier.demo.common;
+package nl.javoracle.common;
 
 
-
-/**
- * This enumeration takes care of the dynamic lookup (no restart required) of
- * properties Properties are defined as KEY(defaultvalue) enumerations. Upon
- * retrieval the property resource is loaded, if a property with KEY exists, the
- * corresponding value is returned, else the defaultvalue is returned
- * 
- * @author Erwin de Gier
- * 
- */
 public enum Parameters {
 	TEST("default");
 

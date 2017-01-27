@@ -1,8 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package nl.edegier.demo.service;
+package nl.javoracle.service;
 
 import java.util.List;
 
@@ -10,11 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 
-/**
- * @author Erwin de Gier
- * @param <T>
- *            The entity to use the CRUD on.
- */
 
 public abstract class AbstractCrudRepository<T> {
 	@PersistenceContext

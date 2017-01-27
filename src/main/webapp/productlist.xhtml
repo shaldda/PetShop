@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<body>
+
+		<ui:composition>
+		<div class="row">
+			<ui:repeat var="product" value="#{productBean.list()}" varStatus="status">
+			<h:form>
+				<div class="col-lg-12" style="width: 300px">
+					<div class="card card-block">
+					  <div class="card-block">
+					    <h4 class="card-title"><h:outputText value="#{product.name}" /></h4>
+					    <p class="card-text"><h:outputText value="#{product.description}" /></p>
+					    <ul class="list-group list-group-flush">
+						    <li class="list-group-item"><h:outputText value="#{product.price}" /></li>
+					    </ul>
+					    <h:commandButton value="In het winkelwagentje" class="btn btn-primary btn-sm" action="#{cartSessionBean.addToCart(product)}"></h:commandButton>
+					  </div>
+					</div>
+				</div>
+				</h:form>
+			</ui:repeat>
+		</div>
+		</ui:composition>
+		
+	</body>
+</html>

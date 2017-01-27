@@ -1,13 +1,10 @@
-package nl.edegier.demo.common;
+package nl.javoracle.common;
 
 import java.util.logging.Logger;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
 
-/**
- * @author Erwin de Gier
- */
 public class LoggerConfigurator {
 
 	@Produces

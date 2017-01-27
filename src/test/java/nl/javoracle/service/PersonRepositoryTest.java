@@ -1,8 +1,9 @@
-package nl.edegier.demo.service;
+package nl.javoracle.service;
 
 import static org.junit.Assert.assertNotNull;
-import nl.edegier.demo.model.Person;
-import nl.edegier.demo.service.PersonService;
+
+import nl.javoracle.model.Person;
+import nl.javoracle.service.PersonService;
 
 import org.junit.After;
 import org.junit.Before;
@@ -25,7 +26,7 @@ public class PersonRepositoryTest extends AbstractTest {
 		Person person = new Person();
 		person.setName("test");
 		person = repository.persist(person);
-		assertNotNull(repository.find(person.getId()));
+		assertNotNull(repository.find(person.getPersonId()));
 	}
 
 	@After

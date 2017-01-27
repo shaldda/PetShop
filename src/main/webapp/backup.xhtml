@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+	<body>
+		<ui:composition>
+				<center><h3>hjdsh</h3></center>
+				<h:form>
+					<h:outputText value ="Parameter: #{personBean.testParameter}" /><br></br>
+					<h:inputText value="#{personBean.name}"></h:inputText>
+					<h:commandButton value="save" action="#{cartBean.save}"></h:commandButton>
+				</h:form>
+				<br></br>
+				<h:dataTable id="productTable" var="product" value="#{productBean.list()}">
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Name" />
+						</f:facet>
+						<h:panelGrid rendered="#{not empty product.name}">
+							<h:outputText
+								value="#{product.name}" />
+						</h:panelGrid>
+					</h:column>
+				</h:dataTable>
+		</ui:composition>
+	</body>
+	
+</html>
