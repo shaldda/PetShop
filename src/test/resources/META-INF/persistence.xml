@@ -4,7 +4,11 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="testPU" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>nl.edegier.demo.model.Person</class>
+		<class>nl.javoracle.model.Person</class>
+		<class>nl.javoracle.model.User</class>
+		<class>nl.javoracle.model.UserSetting</class>
+		<class>nl.javoracle.model.Language</class>
+		<class>nl.javoracle.model.Currency</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
