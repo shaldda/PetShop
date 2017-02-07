@@ -10,10 +10,12 @@ public class Product {
 	@Id
 	@GeneratedValue
 	private Long productId;
-	
+
 	private String name;
 	private String description;
 	private double price;
+	private int stock;
+	
 	public Long getProductId() {
 		return productId;
 	}
@@ -38,6 +40,13 @@ public class Product {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	public int getStock() {
+		return stock;
+	}
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

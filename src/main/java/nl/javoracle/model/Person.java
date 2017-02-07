@@ -2,21 +2,17 @@ package nl.javoracle.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Person {
 
 	@Id
-	@GeneratedValue
-	private Long personId;
+	private String emailId;
 	
-	@OneToOne
-	@JoinColumn(name="userId")
-	private User user;
+	@OneToOne(mappedBy = "person")
+	private Account account; //Hoe voorzorg ik dat ik alleen de ID opslaat
 	
 	private String name;
 	@Column(name = "surname")
@@ -27,14 +23,12 @@ public class Person {
 	private String zipcode;
 	private String city;
 	
-
-	
-	public Long getPersonId() {
-		return personId;
+	public String getEmailId() {
+		return emailId;
 	}
 
-	public void setPersonId(Long personId) {
-		this.personId = personId;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
 
 	public String getSurName() {

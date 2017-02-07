@@ -2,17 +2,17 @@ package nl.javoracle.controller;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-	
-import javax.faces.bean.ManagedBean;
-import javax.inject.Inject;
 
-import nl.javoracle.common.Parameters;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import nl.javoracle.model.Product;
 import nl.javoracle.service.ProductService;
 
-@ManagedBean
+@Named
+@SessionScoped // Een betere oplossing voor dit, niet alles moet in de sessionsscoped
 public class ProductBean implements Serializable {
 
 	private static final long serialVersionUID = -4246337937697608045L;
@@ -23,37 +23,24 @@ public class ProductBean implements Serializable {
 	@Inject
 	Logger logger;
 
-	String name;
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public void addToCart() {
-		
-	}
-
 	public List<Product> list() {
 		return productService.findAll();
 	}
-
-	public String save() {
-		logger.log(Level.INFO, "HOOOOI");
-		if (name != null) {
-			Product product = new Product();
-			product.setName(this.name);
-			productService.persist(product);
-			logger.log(Level.INFO, "Person " + product.getName() + " saved.");
-		}
-
-		return "hello";
+	
+	public void saveProduct(Product product) {
+		productService.persist(product);
 	}
-
-	public String getTestParameter() {
-		return Parameters.TEST.getValue();
+	
+	public Boolean saveProducts(List<Product> products) {
+		boolean saveSucceed = false;
+		
+		if(!products.isEmpty()) {
+			for(Product p : products) {
+				productService.persist(p);
+			}
+			saveSucceed = true; // Een betere oplossing voor dit, checken wanneer persist klaar is of ergens fout is
+		}
+		
+		return saveSucceed;
 	}
 }

@@ -36,8 +36,13 @@
 					      <td><center><h:outputText value="#{product.key.description}" /></center></td>
 					      <td><center><h:outputText value="#{product.key.price}" /></center></td>
 					      <th><center><h:outputText value="#{product.value}" /></center></th>
-					      <td><center><h:commandButton value="Verwijder" class="btn btn-danger" 
-					      		action="#{cartSessionBean.removeFromCart(product.key)}"	 ></h:commandButton></center></td>
+					      <td><center>
+					      		<h:commandButton value="min" class="btn btn-danger" 
+					      		action="#{cartSessionBean.removeFromCart(product.key)}"	 ></h:commandButton>
+					      		<h:commandButton value="plus" class="btn btn-danger" 
+					      		action="#{cartSessionBean.addToCart(product.key)}"	 ></h:commandButton>
+					      		<h:commandButton value="Verwijder" class="btn btn-danger" 
+					      		action="#{cartSessionBean.removeAllSameKindProduct(product.key)}"	 ></h:commandButton></center></td>
 					    </tr>
 				    </h:form>
 				  </c:forEach>

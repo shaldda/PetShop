@@ -7,24 +7,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-@Entity
-public class UserSetting {
+
+public class zzzUserSetting {
 	
 	@Id
 	@Column(name = "usersetting_id")
 	private Long userSettingId;
 	
-	@OneToOne
-	@JoinColumn(name="user_id")
-	private User user;
-	
 	@ManyToOne
 	@JoinColumn(name = "currency_id")
-	private Currency currencies;
+	private zzzCurrency currencies;
 
 	@ManyToOne
 	@JoinColumn(name = "languages_id")
-	private Language languages;
+	private zzzLanguage languages;
+	
+	// Not used Yet //
+	private Account user;
 	
 	public Long getUserSettingId() {
 		return userSettingId;
@@ -34,36 +33,28 @@ public class UserSetting {
 		this.userSettingId = userSettingId;
 	}
 
-	public Currency getCurrencies() {
+	public zzzCurrency getCurrencies() {
 		return currencies;
 	}
 
-	public void setCurrency(Currency currencies) {
+	public void setCurrency(zzzCurrency currencies) {
 		this.currencies = currencies;
 	}
 
-	public Language getLanguages() {
+	public zzzLanguage getLanguages() {
 		return languages;
 	}
 
-	public void setLanguages(Language languages) {
+	public void setLanguages(zzzLanguage languages) {
 		this.languages = languages;
 	}
 
-	public void setCurrencies(Currency currencies) {
+	public void setCurrencies(zzzCurrency currencies) {
 		this.currencies = currencies;
 	}
 
 	@Column(name = "mail_validation")
 	private Boolean mailValidation;
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public Boolean getMailValidation() {
 		return mailValidation;

@@ -1,9 +1,11 @@
 package nl.javoracle.controller;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -40,15 +42,6 @@ public class CartSessionBean implements Serializable {
 		shoppingCart.add(x);
 	}
 	
-	public double getTotalPrice() {
-		totalPrice = 0;
-		for( Product product : shoppingCart) {
-			totalPrice += product.getPrice();
-		}
-		
-		return totalPrice;
-	}
-	
 	public int getShoppingCartSize() {
 		return (!shoppingCart.isEmpty() ? shoppingCart.size() : 0);
 	}
@@ -57,6 +50,40 @@ public class CartSessionBean implements Serializable {
 		shoppingCart.remove(product);
 		return "order";
 	}
+	
+	public String removeAllSameKindProduct(Product product) {
+		List<Product> toRemoveProducts = new ArrayList<>();
+		
+		for(Product p : shoppingCart) {
+			if(p.equals(product)) {
+				toRemoveProducts.add(p);
+			}
+		}
+		shoppingCart.removeAll(toRemoveProducts);
+		
+		return "order";
+
+	}
+	
+	public void emptyCart() { // hier een check doen, voor het geval het niet juist leegt
+		shoppingCart.clear();
+	}
+	
+	public String getTotalPrice() {
+		totalPrice = 0;
+		for( Product product : shoppingCart) {
+			totalPrice += product.getPrice();
+		}
+		
+		String priceProduct = convertD(totalPrice);
+		return priceProduct;
+	}
+
+	private String convertD(double total) {
+		String price = new DecimalFormat("#0.00").format(total);
+		return price;
+	} 
+
 	
 	public Map<Product, Integer> getCart() {
 		Map<Product, Integer> uniqueSet = new HashMap<Product, Integer>();
@@ -71,4 +98,8 @@ public class CartSessionBean implements Serializable {
 		return uniqueSet;
 	}
 	
+	public List<Product> getCartList() {
+		return shoppingCart; // betere naam voor dit bedenken, ook voor de methode hierboven "getCart"
+		
+	}	
 }

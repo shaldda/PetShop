@@ -1,5 +1,5 @@
 package nl.javoracle.model;
 
-public class AaaCategorie {
+public class zzzAaaCategorie {
 
 }
